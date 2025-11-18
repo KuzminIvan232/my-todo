@@ -7,11 +7,7 @@ function App() {
     const { todos, addTodo, toggleTodo, deleteTodo } = useTodos();
 
     return (
-        <div className='app' style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column'
-        }}>
+        <div className='app'>
             <Header />
             <TodoForm onAdd={addTodo} />
             <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
