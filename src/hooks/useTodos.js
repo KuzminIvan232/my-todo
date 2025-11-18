@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
+import { TODO_STORAGE_KEY } from '../utils/constants.js'; // <-- Імпортуємо константу
 
 export function useTodos() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        const saved = localStorage.getItem('todos');
+        // ВИПРАВЛЕНО: використовуємо константу замість магічної строки
+        const saved = localStorage.getItem(TODO_STORAGE_KEY);
         if (saved) {
             setTodos(JSON.parse(saved));
         }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos));
+        // ВИПРАВЛЕНО: використовуємо константу замість магічної строки
+        localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(todos));
     }, [todos]);
 
     const addTodo = (text) => {
